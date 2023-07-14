@@ -1,109 +1,39 @@
-import { Image, View } from 'react-native';
-import { Appbar,Searchbar } from 'react-native-paper'
+import { FlatList, Image, View } from 'react-native';
+import { Appbar, Searchbar } from 'react-native-paper'
 
+const DATA = Array.from(Array(20).keys()).map(n=>({
+    title:'https://picsum.photos/7'+n
+}))
 function Home() {
-    return <>
-        <Appbar.Header style={{paddingHorizontal:30}}>
-            {/* <Appbar.BackAction onPress={() => { }} />
-        <Appbar.Content title="Title" />
-        <Appbar.Action icon="calendar" onPress={() => { }} /> */}
-            {/* <Appbar.Action icon="magnify" onPress={() => { }} />  */}
+    return <View style={{
+        height:'100%'
+    }}>
+        <Appbar.Header style={{ paddingHorizontal: 30 }}>
             <Searchbar />
         </Appbar.Header>
-        <View style={{
-            display:'flex',
-            flexDirection:'row',
-            flexWrap:'wrap',
-            flex:1
-        }}>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-            <Image style={{
-                //  flex:1,
-                 width: "33.3%",
-                 height: 200,
-            }} source={{ uri: 'https://picsum.photos/700' }}/>
-        </View>
-    </>
-
+        {/* <ScrollView
+            contentContainerStyle={{
+                flexWrap: 'wrap',
+                flexDirection: 'row'
+            }}
+        >
+            <Image style={{ width: '33.3%', height: 200 }} source={{
+                uri: 'https://picsum.photos/700'
+            }}></Image>
+            <Image style={{ width: '33.3%', height: 200 }} source={{
+                uri: 'https://picsum.photos/700'
+            }}></Image>
+        </ScrollView> */}
+        <FlatList 
+        // style={{flex:1}}
+        numColumns={3}
+        data={DATA}
+        renderItem={({item})=> <Image style={{ width:'33.33%',height: 200 }} source={{
+            uri: item.title
+        }}></Image>}
+        keyExtractor={item => item.title}
+        />
+    </View>
 }
 
 
